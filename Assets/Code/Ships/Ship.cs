@@ -1,11 +1,13 @@
 using UnityEngine;
+using Inputs;
+using Ships.CheckLimit;
 
 namespace Ships
 {
     public class Ship : MonoBehaviour
     {
         [SerializeField] private float _speed;
-        private Input _input;
+        private Inputs.Input _input;
         private Transform _transform;
         private CheckLimits _checkLimits;
 
@@ -14,7 +16,7 @@ namespace Ships
             _transform = transform;
         }
 
-        public void Configure(Input input, CheckLimits checkLimits)
+        public void Configure(Inputs.Input input, CheckLimits checkLimits)
         {
             _input = input;
             _checkLimits = checkLimits;

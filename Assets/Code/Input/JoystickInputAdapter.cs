@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Ships
+namespace Inputs
 {
     public class JoystickInputAdapter : Input
     {

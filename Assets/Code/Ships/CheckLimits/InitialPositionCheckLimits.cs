@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Ships
+namespace Ships.CheckLimit
 {
     public class InitialPositionCheckLimits : CheckLimits
     {

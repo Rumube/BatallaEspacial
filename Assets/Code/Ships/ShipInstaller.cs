@@ -1,5 +1,7 @@
 using System;
 using UnityEngine;
+using Inputs;
+using Ships.CheckLimit;
 
 namespace Ships
 {
@@ -24,7 +26,7 @@ namespace Ships
             return new ViewportCheckLimits(_ship.transform, Camera.main);
         }
 
-        private Input GetInput()
+        private Inputs.Input GetInput()
         {
             if(_useAI)
             {

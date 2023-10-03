@@ -1,4 +1,4 @@
-namespace Ships
+namespace Ships.CheckLimit
 {
     public interface CheckLimits
     {

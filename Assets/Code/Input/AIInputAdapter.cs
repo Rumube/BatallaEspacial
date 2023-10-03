@@ -1,6 +1,7 @@
+using Ships;
 using UnityEngine;
 
-namespace Ships
+namespace Inputs
 {
     public class AIInputAdapter : Input
     {
