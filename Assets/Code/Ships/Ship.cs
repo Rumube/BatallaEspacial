@@ -7,17 +7,17 @@ namespace Ships
         [SerializeField] private float _speed;
         private Input _input;
         private Transform _transform;
-        private Camera _camera;
+        private CheckLimits _checkLimits;
 
         private void Awake()
         {
-            _camera = Camera.main;
             _transform = transform;
         }
 
-        public void Configure(Input input)
+        public void Configure(Input input, CheckLimits checkLimits)
         {
             _input = input;
+            _checkLimits = checkLimits;
         }
 
         private void Update()
@@ -29,15 +29,7 @@ namespace Ships
         private void Move(Vector2 direction)
         {
             _transform.Translate(_speed * Time.deltaTime * direction);
-            ClampFinalPosition();
-        }
-
-        private void ClampFinalPosition()
-        {
-            var viewportPoint = _camera.WorldToViewportPoint(_transform.position);
-            viewportPoint.x = Mathf.Clamp(viewportPoint.x, 0.03f, 0.97f);
-            viewportPoint.y = Mathf.Clamp(viewportPoint.y, 0.03f, 0.97f);
-            _transform.position = _camera.ViewportToWorldPoint(viewportPoint);
+            _checkLimits.ClampFinalPosition();
         }
 
         private Vector2 GetDirection()
