@@ -11,5 +11,10 @@ namespace Inputs
 
             return new Vector2(horizontalDir, verticalDir);
         }
+
+        public bool IsFireActionPressed()
+        {
+            return UnityEngine.Input.GetButton("Fire1");
+        }
     }
 }

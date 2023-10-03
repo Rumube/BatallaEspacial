@@ -30,5 +30,10 @@ namespace Inputs
 
             return new Vector2(_currentDirectionX, -0.1f);
         }
+
+        public bool IsFireActionPressed()
+        {
+            return Random.Range(0, 100) < 20;
+        }
     }
 }
