@@ -169,7 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyId1: {fileID: 11400000, guid: 9a13a490f7f6f4147a93fdd6d0343e78, type: 2}
   _enemyId2: {fileID: 11400000, guid: a7b79e3fd1924dd45b772a0271e453bb, type: 2}
-  _enemiesConfiguration: {fileID: 0}
+  _enemiesConfiguration: {fileID: 11400000, guid: 71514d778b6ce804583d77cc288f304a, type: 2}
 --- !u!1 &770319470
 GameObject:
   m_ObjectHideFlags: 0
