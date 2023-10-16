@@ -4,18 +4,25 @@ using UnityEngine;
 
 namespace Patterns.Factory
 {
-    public class EnemiesConfiguration : MonoBehaviour
+    [CreateAssetMenu(menuName ="Factory/Create EnemiesConfiguration", fileName ="EnemiesConfiguration", order = 1)]
+    public class EnemiesConfiguration : ScriptableObject
     {
-        // Start is called before the first frame update
-        void Start()
-        {
+        [SerializeField] private Enemy[] _enemyPrefabs;
+        private Dictionary<string, Enemy> _idToEnemyPrefab;
 
+        private void Awake()
+        {
+            _idToEnemyPrefab = new Dictionary<string, Enemy>();
+
+            foreach (Enemy enemyPrefab in _enemyPrefabs)
+            {
+                _idToEnemyPrefab.Add(enemyPrefab.Id, enemyPrefab);
+            }
         }
 
-        // Update is called once per frame
-        void Update()
+        public Enemy GetEnemyById(string id)
         {
-
+            return _idToEnemyPrefab[id];
         }
     }
 }

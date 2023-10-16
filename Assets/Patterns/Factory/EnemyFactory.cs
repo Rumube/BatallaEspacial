@@ -5,27 +5,19 @@ using UnityEngine;
 
 namespace Patterns.Factory
 {
-    public class EnemyFactory : MonoBehaviour
+    public class EnemyFactory
     {
+        private readonly EnemiesConfiguration _enemiesConfiguration;
 
-        [SerializeField] private Enemy[] _enemyPrefabs;
-        private Dictionary<string, Enemy> _idToEnemyPrefab;
-
-
-        private void Awake()
+        public EnemyFactory(EnemiesConfiguration enemiesConfiguration)
         {
-            _idToEnemyPrefab = new Dictionary<string, Enemy>();
-
-            foreach (Enemy enemyPrefab in _enemyPrefabs)
-            {
-                _idToEnemyPrefab.Add(enemyPrefab.Id, enemyPrefab);
-            }
+            _enemiesConfiguration = enemiesConfiguration;
         }
 
         public void Create(string enemyId)
         {
-            var enemyPrefab = _idToEnemyPrefab[enemyId];
-            Instantiate(enemyPrefab, Random.onUnitSphere * 3, Quaternion.identity);
+            var enemyPrefab = _enemiesConfiguration.GetEnemyById(enemyId);
+            Object.Instantiate(enemyPrefab, Random.onUnitSphere * 3, Quaternion.identity);
         }
     }
 }
