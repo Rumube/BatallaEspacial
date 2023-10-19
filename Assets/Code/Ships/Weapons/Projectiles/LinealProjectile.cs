@@ -3,22 +3,21 @@ using UnityEngine;
 
 namespace Ships.Weapons.Projectiles
 {
-    [RequireComponent(typeof(Rigidbody2D))]
     public class LinealProjectile : Projectile
     {
-        [SerializeField] private Rigidbody2D _rigidbody2D;
         [SerializeField] private float _speed;
 
-        private void Start()
+        protected override void DoDestroy()
         {
-            _rigidbody2D.velocity = transform.up * _speed;
-            StartCoroutine(DestroyIn(4f));
         }
 
-        private IEnumerator DestroyIn(float seconds)
+        protected override void DoMove()
         {
-            yield return new WaitForSeconds(seconds);
-            Destroy(gameObject);
+        }
+
+        protected override void DoStart()
+        {
+            _rigidbody2D.velocity = transform.up * _speed;
         }
     }
 }
