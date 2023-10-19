@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: ProjectilesConfiguration
   m_EditorClassIdentifier: 
   _projectilePrefabs:
-  - {fileID: 3751447081379592842, guid: 202834593636dc343ab171c9209b5a9b, type: 3}
-  - {fileID: 3751447081379592842, guid: 98d44a7a6f0a97547a9351a300d1293b, type: 3}
+  - {fileID: -8414021370401956423, guid: 202834593636dc343ab171c9209b5a9b, type: 3}
+  - {fileID: 5382166337156423307, guid: 98d44a7a6f0a97547a9351a300d1293b, type: 3}

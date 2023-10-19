@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6647861577295445641}
   - component: {fileID: 6647861577295445638}
   - component: {fileID: 6647861577295445640}
-  - component: {fileID: 3751447081379592842}
+  - component: {fileID: 5382166337156423307}
   m_Layer: 0
   m_Name: Projectile2
   m_TagString: Untagged
@@ -107,7 +107,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &3751447081379592842
+--- !u!114 &5382166337156423307
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,9 +116,42 @@ MonoBehaviour:
   m_GameObject: {fileID: 6647861577295445639}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7239acf71c86dbf4f864e70b0719033a, type: 3}
+  m_Script: {fileID: 11500000, guid: 1673861f65339bd45add8ca90c43233a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _id: {fileID: 11400000, guid: 196fc6149a0ea024eb607e3f9591110a, type: 2}
   _rigidbody2D: {fileID: 6647861577295445640}
   _speed: 5
+  _horizontalPosition:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.055488374
+      outSlope: 0.055488374
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.21395086
+      value: 0.011871785
+      inSlope: 25.54883
+      outSlope: 25.54883
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.004376876
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1.257082
+      outSlope: 1.257082
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
