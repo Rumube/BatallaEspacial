@@ -11,9 +11,8 @@ namespace Ships
     {
         [SerializeField] private MovementController _movementController;
         [SerializeField] private WeaponController _weaponController;
-
-
-
+        [SerializeField] private ShipId _shipId;
+        public string Id => _shipId.Value;
         private Inputs.Input _input;
 
         public void Configure(Inputs.Input input, CheckLimits checkLimits)

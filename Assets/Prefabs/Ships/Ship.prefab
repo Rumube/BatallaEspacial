@@ -186,6 +186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _movementController: {fileID: 6432308110468854979}
   _weaponController: {fileID: 2166168540594254475}
+  _shipId: {fileID: 11400000, guid: 285133b3c8b748f468e2b37e6c993f62, type: 2}
 --- !u!114 &6432308110468854979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,8 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28077a8281566204092c26840c3bb6cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _projectileConfiguration: {fileID: 11400000, guid: 11208b854fc2bf04585fd48bece5d648, type: 2}
+  _defaultProjectileId: {fileID: 11400000, guid: 3e961ed4ee889a84c89e17680697e97b, type: 2}
   _fireRateInSeconds: 0.3
-  _projectilePrefabs:
-  - {fileID: 3751447081379592842, guid: 202834593636dc343ab171c9209b5a9b, type: 3}
-  - {fileID: 3751447081379592842, guid: 98d44a7a6f0a97547a9351a300d1293b, type: 3}
   _projectileSpawnerPosition: {fileID: 5489871716280440786}

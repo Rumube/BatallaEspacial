@@ -21,5 +21,5 @@ namespace Ships.Weapons
             return Object.Instantiate(prefab, position, rotation);
         }
     }
-}
+} 
 
