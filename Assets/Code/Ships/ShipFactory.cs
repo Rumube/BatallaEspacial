@@ -12,7 +12,7 @@ namespace Ships
             _configuration = configuration;
         }
 
-        public Ship Create(string id, Vector3 position, Quaternion rotation)
+        public ShipMediator Create(string id, Vector3 position, Quaternion rotation)
         {
             var prefab = _configuration.GetShipById(id);
 

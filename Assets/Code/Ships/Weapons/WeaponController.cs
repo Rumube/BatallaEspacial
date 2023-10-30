@@ -8,9 +8,8 @@ namespace Ships
     public class WeaponController : MonoBehaviour
     {
         [SerializeField] private ProjectilesConfiguration _projectileConfiguration;
-        [SerializeField] private ProjectileId _defaultProjectileId;
-        [SerializeField] private float _fireRateInSeconds;
         [SerializeField] private Transform _projectileSpawnerPosition;
+        private float _fireRateInSeconds;
         private float _remainingSecondsToBeAbleShoot;
         private ProjectileFactory _projectileFactory;
 
@@ -23,10 +22,11 @@ namespace Ships
             _projectileFactory = new ProjectileFactory(Instantiate(_projectileConfiguration));   
         }
 
-        public void Configure(Ship ship)
+        public void Configure(Ship ship, float fireRate, ProjectileId defaultProjectileId)
         {
             _ship = ship;
-            _activeProjectileId = _defaultProjectileId.Value;
+            _activeProjectileId = defaultProjectileId.Value;
+            _fireRateInSeconds = fireRate;
         }
 
         internal void TryShoot()

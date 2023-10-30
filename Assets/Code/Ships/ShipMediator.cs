@@ -15,11 +15,12 @@ namespace Ships
         public string Id => _shipId.Value;
         private Inputs.Input _input;
 
-        public void Configure(Inputs.Input input, CheckLimits checkLimits)
+        public void Configure(Inputs.Input input, CheckLimits checkLimits,
+            Vector2 speed, float fireRate, ProjectileId defaultProjectileId)
         {
             _input = input;
-            _movementController.Configure(this, checkLimits);
-            _weaponController.Configure(this);
+            _movementController.Configure(this, checkLimits, speed);
+            _weaponController.Configure(this, fireRate, defaultProjectileId);
         }
 
         private void Update()

@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2a82904656ea0746ac034d08e9ba0f8, type: 3}
+  m_Name: ShipToSpawnConfiguration2
+  m_EditorClassIdentifier: 
+  _shipId: {fileID: 11400000, guid: 285133b3c8b748f468e2b37e6c993f62, type: 2}
+  _defaultProjectileId: {fileID: 11400000, guid: 196fc6149a0ea024eb607e3f9591110a, type: 2}
+  _speed: {x: 5, y: 1}
+  _fireRate: 0.2

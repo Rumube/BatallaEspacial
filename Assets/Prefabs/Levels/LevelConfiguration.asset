@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9ba7a565fd567a46bc6003dfccb81fe, type: 3}
+  m_Name: LevelConfiguration
+  m_EditorClassIdentifier: 
+  _spawnConfigurations:
+  - _shipToSpawnConfiguration:
+    - {fileID: 11400000, guid: ffb522348a7f47547a1c9cc3bdcab3cc, type: 2}
+    _timeToSpawn: 1
+  - _shipToSpawnConfiguration:
+    - {fileID: 11400000, guid: ffb522348a7f47547a1c9cc3bdcab3cc, type: 2}
+    _timeToSpawn: 2
+  - _shipToSpawnConfiguration:
+    - {fileID: 11400000, guid: bee77f96f74236e45a5032ab2d54e026, type: 2}
+    _timeToSpawn: 3
+  - _shipToSpawnConfiguration:
+    - {fileID: 11400000, guid: bee77f96f74236e45a5032ab2d54e026, type: 2}
+    _timeToSpawn: 4
+  - _shipToSpawnConfiguration:
+    - {fileID: 11400000, guid: bee77f96f74236e45a5032ab2d54e026, type: 2}
+    _timeToSpawn: 5
