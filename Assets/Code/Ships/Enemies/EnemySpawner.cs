@@ -1,8 +1,4 @@
-using Inputs;
-using Ships.CheckLimit;
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using Ships.Common;
 using UnityEngine;
 
 namespace Ships.Enemies
@@ -47,10 +43,14 @@ namespace Ships.Enemies
             {
                 var shipConfiguration = spawnConfiguration.ShipToSpawnConfiguration[i];
                 var spawnPosition = _spawnPositions[i % _spawnPositions.Length];
-                var ship = _shipFactory.Create(shipConfiguration.ShipId.Value, spawnPosition.position, spawnPosition.rotation);
+                var shipBuilder = _shipFactory.Create(shipConfiguration.ShipId.Value);
 
-                ship.Configure(new AIInputAdapter(ship), new InitialPositionCheckLimits(ship.transform, 10f),
-                    shipConfiguration.Speed, shipConfiguration.FireRate, shipConfiguration.DefaultProjectileId);
+                shipBuilder.WithPosition(spawnPosition.position)
+                           .WithRotation(spawnPosition.rotation)
+                           .WithInputMode(ShipBuilder.InputMode.Ai)
+                           .WithCheckLimitsType(ShipBuilder.CheckLimitsTypes.InitialPosition)
+                           .WithConfiguration(shipConfiguration)
+                           .Build();
             }
         }
     }
