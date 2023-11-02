@@ -1,4 +1,6 @@
 using Ships.Common;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Ships.Enemies
@@ -11,14 +13,40 @@ namespace Ships.Enemies
         private ShipFactory _shipFactory;
         private float _currentTimeInSeconds;
         private int _currentConfigurationIndex;
+        private bool _canSpawn;
+
+        private List<ShipMediator> _spawnedShips;
 
         private void Awake()
         {
+            _spawnedShips = new List<ShipMediator>();
             _shipFactory = new ShipFactory(Instantiate(_shipsConfiguration));
+        }
+
+        public void StartSpawn()
+        {
+            _canSpawn = true;
+        }
+
+        internal void StopAndReset()
+        {
+            _canSpawn = false;
+            _currentTimeInSeconds = 0;
+            _currentConfigurationIndex = 0;
+
+            foreach (ShipMediator ship in _spawnedShips)
+            {
+                Destroy(ship.gameObject);
+            }
+            _spawnedShips.Clear();
         }
 
         private void Update()
         {
+            if(!_canSpawn)
+            {
+                return;
+            }
             if(_currentConfigurationIndex >= _levelConfiguration.SpawnConfigurations.Length)
             {
                 return;
@@ -45,12 +73,14 @@ namespace Ships.Enemies
                 var spawnPosition = _spawnPositions[i % _spawnPositions.Length];
                 var shipBuilder = _shipFactory.Create(shipConfiguration.ShipId.Value);
 
-                shipBuilder.WithPosition(spawnPosition.position)
+                var ship = shipBuilder.WithPosition(spawnPosition.position)
                            .WithRotation(spawnPosition.rotation)
                            .WithInputMode(ShipBuilder.InputMode.Ai)
                            .WithCheckLimitsType(ShipBuilder.CheckLimitsTypes.InitialPosition)
                            .WithConfiguration(shipConfiguration)
                            .Build();
+
+                _spawnedShips.Add(ship);
             }
         }
     }
