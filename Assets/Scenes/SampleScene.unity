@@ -181,7 +181,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: START
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -789,7 +789,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: STOP
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -866,6 +866,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 643487463}
   m_CullTransparentMesh: 1
+--- !u!1 &714463785
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 714463786}
+  - component: {fileID: 714463787}
+  m_Layer: 0
+  m_Name: GameFacade
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &714463786
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 714463785}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &714463787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 714463785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c93e125c8f844447a15d161687e89e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _screenFade: {fileID: 1838354962}
+  _shipInstaller: {fileID: 1708995670}
+  _enemySpawner: {fileID: 1616516996}
 --- !u!224 &891951524 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7779909316519618176, guid: 2a6019066c9308d479d50cf125e4b4d5, type: 3}
@@ -893,8 +940,9 @@ GameObject:
   - component: {fileID: 1097008303}
   - component: {fileID: 1097008305}
   - component: {fileID: 1097008304}
+  - component: {fileID: 1097008306}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -960,6 +1008,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1097008302}
   m_CullTransparentMesh: 1
+--- !u!114 &1097008306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1097008302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06d76adbaef4bb544a259a6a8333d4d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startBattleButton: {fileID: 229929644}
+  _stopBattleButton: {fileID: 149056358}
+  _gameFacade: {fileID: 714463787}
 --- !u!1 &1259473530
 GameObject:
   m_ObjectHideFlags: 0
@@ -1298,7 +1361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c02dc50bbaca1334d857c971b5a9a331, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _screenFadeImage: {fileID: 0}
+  _screenFadeImage: {fileID: 1838354963}
 --- !u!114 &1838354963
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using Battle;
 using Ships;
 using Ships.Enemies;
 using Unity.VisualScripting;
@@ -11,9 +12,7 @@ namespace UI
         [SerializeField] private Button _startBattleButton;
         [SerializeField] private Button _stopBattleButton;
 
-        [SerializeField] private ScreenFade _screenFade;
-        [SerializeField] private ShipInstaller _shipInstaller;
-        [SerializeField] private EnemySpawner _enemySpawner;
+        [SerializeField] private GameFacade _gameFacade;
 
         private void Awake()
         {
@@ -23,16 +22,12 @@ namespace UI
 
         private void StartBattle()
         {
-            _enemySpawner.StartSpawn();
-            _shipInstaller.SpawnUserShip();
-            _screenFade.Hide();
+            _gameFacade.StartBattle();
         }
 
         private void StopBattle()
         {
-            _enemySpawner.StopAndReset();
-            _shipInstaller.DestroyUserShip();
-            _screenFade.Show();
+            _gameFacade.StopBattle();
         }
     }
 }
