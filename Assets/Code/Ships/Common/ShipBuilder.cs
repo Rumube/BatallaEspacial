@@ -37,6 +37,7 @@ namespace Ships.Common
         private Joystick _joystick;
         private JoyButton _joyButton;
         private CheckLimitsTypes _checkLitmitsType;
+        private Teams _team;
 
         public ShipBuilder FromPrefab(ShipMediator prefab)
         {
@@ -47,6 +48,11 @@ namespace Ships.Common
         public ShipBuilder WithPosition(Vector3 position)
         {
             _position = position;
+            return this;
+        }
+        public ShipBuilder WithTeam(Teams team)
+        {
+            _team = team;
             return this;
         }
 
@@ -98,8 +104,11 @@ namespace Ships.Common
             var configuration = new ShipConfiguration(GetInput(ship),
                                                       GetCheckLimits(ship),
                                                       _shipConfiguration.Speed,
+                                                      _shipConfiguration.Health,
                                                       _shipConfiguration.FireRate,
-                                                      _shipConfiguration.DefaultProjectileId);
+                                                      _shipConfiguration.DefaultProjectileId,
+                                                      _team,
+                                                      _shipConfiguration.Score);
             
             ship.Configure(configuration);
             return ship;
@@ -117,7 +126,7 @@ namespace Ships.Common
                 case CheckLimitsTypes.InitialPosition:
                     return new InitialPositionCheckLimits(ship.transform, 10);
                 case CheckLimitsTypes.ViewPort:
-                    return new ViewportCheckLimits(ship.transform, Camera.main);
+                    return new ViewportCheckLimits(Camera.main);
                 default:
                     return null;
             }

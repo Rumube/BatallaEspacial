@@ -7,18 +7,17 @@ namespace Ships.CheckLimit
         private readonly Transform _transform;
         private readonly Camera _camera;
 
-        public ViewportCheckLimits(Transform transform, Camera camera)
+        public ViewportCheckLimits(Camera camera)
         {
-            _transform = transform;
             _camera = camera;
         }
 
-        public void ClampFinalPosition()
+        public Vector2 ClampFinalPosition(Vector2 currentPosition)
         {
-            var viewportPoint = _camera.WorldToViewportPoint(_transform.position);
+            var viewportPoint = _camera.WorldToViewportPoint(currentPosition);
             viewportPoint.x = Mathf.Clamp(viewportPoint.x, 0.03f, 0.97f);
             viewportPoint.y = Mathf.Clamp(viewportPoint.y, 0.03f, 0.97f);
-            _transform.position = _camera.ViewportToWorldPoint(viewportPoint);
+            return _camera.ViewportToWorldPoint(viewportPoint);
         }
     }
 }

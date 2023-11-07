@@ -78,6 +78,7 @@ namespace Ships.Enemies
                            .WithInputMode(ShipBuilder.InputMode.Ai)
                            .WithCheckLimitsType(ShipBuilder.CheckLimitsTypes.InitialPosition)
                            .WithConfiguration(shipConfiguration)
+                           .WithTeam(Teams.Enemy)
                            .Build();
 
                 _spawnedShips.Add(ship);

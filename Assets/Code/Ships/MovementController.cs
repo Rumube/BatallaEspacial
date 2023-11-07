@@ -8,13 +8,14 @@ namespace Ships
         [SerializeField] private Vector2 _speed;
 
         private Ship _ship;
-        private Transform _transform;
+        private Rigidbody2D _rigidbody;
         private CheckLimits _checkLimits;
-
+        private Vector2 _currentPosition;
 
         private void Awake()
         {
-            _transform = transform;
+            _rigidbody = GetComponent<Rigidbody2D>();
+            _currentPosition = _rigidbody.position;
         }
 
         public void Configure(Ship ship, CheckLimits checkLimits, Vector2 speed)
@@ -26,8 +27,9 @@ namespace Ships
 
         public void Move(Vector2 direction)
         {
-            _transform.Translate(_speed * Time.deltaTime * direction);
-            _checkLimits.ClampFinalPosition();
+            _currentPosition += (_speed * Time.deltaTime * direction);
+            _currentPosition = _checkLimits.ClampFinalPosition(_currentPosition);
+            _rigidbody.MovePosition(_currentPosition);
         }
     }
 }
