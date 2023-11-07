@@ -61,9 +61,13 @@ namespace Ships
         {
             if(isDeath)
             {
-                var scoreView = FindObjectOfType<ScoreView>();
-                scoreView.AddScore(_team, _score);
+                ScoreView.Instance.AddScore(_team, _score);
                 Destroy(gameObject);
+
+                if(_team == Teams.Ally)
+                {
+                    GameOverView.Instance.Show();
+                }
             }
         }
     }
