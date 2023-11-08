@@ -370,7 +370,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1320089612}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e86c703824bbb9b43b1375a514c9671b, type: 3}
+  m_Script: {fileID: 11500000, guid: ca0f13f10ec677e45bda482cbec1374d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _skillView: {fileID: 1580365079}
@@ -485,7 +485,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1580365074}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50bc09a7f0389d749ace1b7138cdf0b0, type: 3}
+  m_Script: {fileID: 11500000, guid: 66c84be7fee866d45a07cd54c491715e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _chargesText: {fileID: 1803115998}
