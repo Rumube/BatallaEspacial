@@ -1,3 +1,4 @@
+using Common;
 using Ships.Common;
 using System;
 using System.Collections.Generic;
@@ -15,11 +16,8 @@ namespace Ships.Enemies
         private int _currentConfigurationIndex;
         private bool _canSpawn;
 
-        private List<ShipMediator> _spawnedShips;
-
         private void Awake()
         {
-            _spawnedShips = new List<ShipMediator>();
             _shipFactory = new ShipFactory(Instantiate(_shipsConfiguration));
         }
 
@@ -33,21 +31,15 @@ namespace Ships.Enemies
             _canSpawn = false;
             _currentTimeInSeconds = 0;
             _currentConfigurationIndex = 0;
-
-            foreach (ShipMediator ship in _spawnedShips)
-            {
-                Destroy(ship.gameObject);
-            }
-            _spawnedShips.Clear();
         }
 
         private void Update()
         {
-            if(!_canSpawn)
+            if (!_canSpawn)
             {
                 return;
             }
-            if(_currentConfigurationIndex >= _levelConfiguration.SpawnConfigurations.Length)
+            if (_currentConfigurationIndex >= _levelConfiguration.SpawnConfigurations.Length)
             {
                 return;
             }
@@ -56,7 +48,7 @@ namespace Ships.Enemies
 
             var spawnConfiguration = _levelConfiguration.SpawnConfigurations[_currentConfigurationIndex];
 
-            if(spawnConfiguration.TimeToSpawn > _currentTimeInSeconds)
+            if (spawnConfiguration.TimeToSpawn > _currentTimeInSeconds)
             {
                 return;
             }
@@ -80,8 +72,6 @@ namespace Ships.Enemies
                            .WithConfiguration(shipConfiguration)
                            .WithTeam(Teams.Enemy)
                            .Build();
-
-                _spawnedShips.Add(ship);
             }
         }
     }

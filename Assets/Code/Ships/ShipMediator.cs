@@ -1,3 +1,4 @@
+using Common;
 using Ships.Common;
 using UI;
 using UnityEngine;
@@ -6,7 +7,7 @@ namespace Ships
 {
     [RequireComponent(typeof(MovementController))]
     [RequireComponent(typeof(WeaponController))]
-    public class ShipMediator : MonoBehaviour, Ship
+    public class ShipMediator : MonoBehaviour, Ship, EventObserver
     {
         [SerializeField] private MovementController _movementController;
         [SerializeField] private WeaponController _weaponController;
@@ -17,6 +18,16 @@ namespace Ships
         private Inputs.Input _input;
         private Teams _team;
         private int _score;
+
+        private void Start()
+        {
+            EventQueue.Instance.Subscribe(EventIds.GameOver, this);
+        }
+
+        private void OnDestroy()
+        {
+            EventQueue.Instance.Unsubscribe(EventIds.GameOver, this);
+        }
 
         public void Configure(ShipConfiguration configuration)
         {
@@ -61,14 +72,21 @@ namespace Ships
         {
             if(isDeath)
             {
-                ScoreView.Instance.AddScore(_team, _score);
                 Destroy(gameObject);
 
-                if(_team == Teams.Ally)
-                {
-                    GameOverView.Instance.Show();
-                }
+                var shipDestroyedEventData = new ShipDestroyedEventData(_score, _team, GetInstanceID());
+                EventQueue.Instance.EnqueueEvent(shipDestroyedEventData);
             }
+        }
+
+        public void Process(EventData eventData)
+        {
+            if(eventData.EventId != EventIds.GameOver)
+            {
+                return;
+            }
+
+            Destroy(gameObject);
         }
     }
 }

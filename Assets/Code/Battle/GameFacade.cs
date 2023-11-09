@@ -24,7 +24,6 @@ namespace Battle
         public void StopBattle()
         {
             _enemySpawner.StopAndReset();
-            _shipInstaller.DestroyUserShip();
             _screenFade.Show();
         }
     }
