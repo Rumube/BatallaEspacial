@@ -9,7 +9,7 @@ namespace Patterns.EventQueue
 
         private int _numberOfEnemiesDead;
 
-        private AchivementsSystem()
+        public AchivementsSystem()
         {
             _numberOfEnemiesDead = 0;
         }
