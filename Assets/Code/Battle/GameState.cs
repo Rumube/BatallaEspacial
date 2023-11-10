@@ -1,7 +1,5 @@
 using Common;
-using Patterns.Facade;
 using Ships.Common;
-using System;
 using UnityEngine;
 
 namespace Battle

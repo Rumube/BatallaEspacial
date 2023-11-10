@@ -1,7 +1,5 @@
 using Ships.CheckLimit;
 using Ships.Weapons;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Ships.Common

@@ -1,7 +1,5 @@
 using Ships;
 using Ships.Enemies;
-using System.Collections;
-using System.Collections.Generic;
 using UI;
 using UnityEngine;
 
