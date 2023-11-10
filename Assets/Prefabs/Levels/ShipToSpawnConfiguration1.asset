@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shipId: {fileID: 11400000, guid: 285133b3c8b748f468e2b37e6c993f62, type: 2}
   _defaultProjectileId: {fileID: 11400000, guid: 3e961ed4ee889a84c89e17680697e97b, type: 2}
-  _speed: {x: 5, y: 2}
-  _fireRate: 1
+  _speed: {x: 5, y: 6}
+  _fireRate: 10
   _health: 1
   _score: 10

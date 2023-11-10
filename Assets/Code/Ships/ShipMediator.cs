@@ -1,6 +1,5 @@
 using Common;
 using Ships.Common;
-using UI;
 using UnityEngine;
 
 namespace Ships
@@ -14,6 +13,7 @@ namespace Ships
         [SerializeField] private ShipId _shipId;
         [SerializeField] private HealthController _healthController;
 
+        private CheckDestroyLimits.CheckDestroyLimits _checkDestryoLimits;
         public string Id => _shipId.Value;
         private Inputs.Input _input;
         private Teams _team;
@@ -22,15 +22,18 @@ namespace Ships
         private void Start()
         {
             EventQueue.Instance.Subscribe(EventIds.GameOver, this);
+            EventQueue.Instance.Subscribe(EventIds.Victory, this);
         }
 
         private void OnDestroy()
         {
             EventQueue.Instance.Unsubscribe(EventIds.GameOver, this);
+            EventQueue.Instance.Unsubscribe(EventIds.Victory, this);
         }
 
         public void Configure(ShipConfiguration configuration)
         {
+            _checkDestryoLimits = configuration.CheckDestroyLimits;
             _input = configuration.Input;
             _movementController.Configure(this, configuration.CheckLimits, configuration.Speed);
             _weaponController.Configure(this, configuration.FireRate, configuration.DefaultProjectileId, configuration.Team);
@@ -48,6 +51,20 @@ namespace Ships
         private void Update()
         {
             TryShoot();
+            CheckDestroyLimits();
+        }
+
+        private void CheckDestroyLimits()
+        {
+            if (_checkDestryoLimits.IsInsideTheLimits(transform.position))
+            {
+                return;
+            }
+
+            Destroy(gameObject);
+
+            var shipDestroyedEventData = new ShipDestroyedEventData(0, _team, GetInstanceID());
+            EventQueue.Instance.EnqueueEvent(shipDestroyedEventData);
         }
 
         private void TryShoot()
@@ -81,7 +98,7 @@ namespace Ships
 
         public void Process(EventData eventData)
         {
-            if(eventData.EventId != EventIds.GameOver)
+            if(eventData.EventId != EventIds.GameOver && eventData.EventId != EventIds.Victory)
             {
                 return;
             }

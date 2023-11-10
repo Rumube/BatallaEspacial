@@ -55,6 +55,11 @@ namespace Ships.Enemies
 
             SpawnShips(spawnConfiguration);
             _currentConfigurationIndex += 1;
+
+            if (_currentConfigurationIndex >= _levelConfiguration.SpawnConfigurations.Length)
+            {
+                EventQueue.Instance.EnqueueEvent(new EventData(EventIds.AllShipSpawned));
+            }
         }
 
         private void SpawnShips(SpawnConfiguration spawnConfiguration)
@@ -71,7 +76,10 @@ namespace Ships.Enemies
                            .WithCheckLimitsType(ShipBuilder.CheckLimitsTypes.InitialPosition)
                            .WithConfiguration(shipConfiguration)
                            .WithTeam(Teams.Enemy)
+                           .WithCkeckBottomDestryoLimits()
                            .Build();
+
+                EventQueue.Instance.EnqueueEvent(new EventData(EventIds.ShipSpawned));
             }
         }
     }
