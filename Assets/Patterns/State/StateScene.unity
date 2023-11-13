@@ -391,9 +391,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 203c0758fd152a44b85a11b1b6c5c576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _idleTime: 2
+  _idleTime: 3
   _visionRange: 20
-  _minDistanceToAttack: 2
+  _minDistanceToAttack: 5
   _movementSpeed: 2
   _attackDamage: 2
 --- !u!4 &2010246931

@@ -42,7 +42,6 @@ namespace Common
         public void EnqueueEvent(EventData eventData)
         {
             _nextEvents.Enqueue(eventData);
-            Debug.Log($"Enqueued event {eventData} on frame {Time.frameCount}");
         }
 
         private void LateUpdate()
@@ -66,8 +65,6 @@ namespace Common
 
         private void ProcessEvent(EventData eventData)
         {
-            Debug.Log($"Processing event {eventData.EventId} on frame {Time.frameCount}");
-
             if(_observers.TryGetValue(eventData.EventId, out var eventObservers) )
             {
                 foreach (var eventObserver in eventObservers)
