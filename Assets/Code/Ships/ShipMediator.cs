@@ -1,6 +1,7 @@
 using Common;
 using Ships.Common;
 using UnityEngine;
+using Patterns.ServiceLocator;
 
 namespace Ships
 {
@@ -21,14 +22,14 @@ namespace Ships
 
         private void Start()
         {
-            EventQueue.Instance.Subscribe(EventIds.GameOver, this);
-            EventQueue.Instance.Subscribe(EventIds.Victory, this);
+            ServiceLocator.Instance.GetService<EventQueue>().Subscribe(EventIds.GameOver, this);
+            ServiceLocator.Instance.GetService<EventQueue>().Subscribe(EventIds.Victory, this);
         }
 
         private void OnDestroy()
         {
-            EventQueue.Instance.Unsubscribe(EventIds.GameOver, this);
-            EventQueue.Instance.Unsubscribe(EventIds.Victory, this);
+            ServiceLocator.Instance.GetService<EventQueue>().Unsubscribe(EventIds.GameOver, this);
+            ServiceLocator.Instance.GetService<EventQueue>().Unsubscribe(EventIds.Victory, this);
         }
 
         public void Configure(ShipConfiguration configuration)
@@ -64,7 +65,7 @@ namespace Ships
             Destroy(gameObject);
 
             var shipDestroyedEventData = new ShipDestroyedEventData(0, _team, GetInstanceID());
-            EventQueue.Instance.EnqueueEvent(shipDestroyedEventData);
+            ServiceLocator.Instance.GetService<EventQueue>().EnqueueEvent(shipDestroyedEventData);
         }
 
         private void TryShoot()
@@ -92,7 +93,7 @@ namespace Ships
                 Destroy(gameObject);
 
                 var shipDestroyedEventData = new ShipDestroyedEventData(_score, _team, GetInstanceID());
-                EventQueue.Instance.EnqueueEvent(shipDestroyedEventData);
+                ServiceLocator.Instance.GetService<EventQueue>().EnqueueEvent(shipDestroyedEventData);
             }
         }
 

@@ -1,5 +1,6 @@
 using Common;
 using System;
+using Patterns.ServiceLocator;
 
 namespace Battle.States
 {
@@ -15,7 +16,7 @@ namespace Battle.States
         public void Start(Action<GameStateController.GameStates> onEndedCallback)
         {
             _gameFacade.StopBattle();
-            EventQueue.Instance.EnqueueEvent(new EventData(EventIds.GameOver));
+            ServiceLocator.Instance.GetService<EventQueue>().EnqueueEvent(new EventData(EventIds.GameOver));
         }
 
         public void Stop()

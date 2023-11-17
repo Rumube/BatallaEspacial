@@ -1,4 +1,5 @@
 using Common;
+using Patterns.ServiceLocator;
 using Ships.Common;
 using System;
 
@@ -16,16 +17,16 @@ namespace Battle.States
             _aliveShips = 0;
             _allShipSpawned = false;
 
-            EventQueue.Instance.Subscribe(EventIds.ShipSpawned, this);
-            EventQueue.Instance.Subscribe(EventIds.ShipDestroyed, this);
-            EventQueue.Instance.Subscribe(EventIds.AllShipSpawned, this);
+            ServiceLocator.Instance.GetService<EventQueue>().Subscribe(EventIds.ShipSpawned, this);
+            ServiceLocator.Instance.GetService<EventQueue>().Subscribe(EventIds.ShipDestroyed, this);
+            ServiceLocator.Instance.GetService<EventQueue>().Subscribe(EventIds.AllShipSpawned, this);
         }
 
         public void Stop()
         {
-            EventQueue.Instance.Unsubscribe(EventIds.ShipSpawned, this);
-            EventQueue.Instance.Unsubscribe(EventIds.ShipDestroyed, this);
-            EventQueue.Instance.Unsubscribe(EventIds.AllShipSpawned, this);
+            ServiceLocator.Instance.GetService<EventQueue>().Unsubscribe(EventIds.ShipSpawned, this);
+            ServiceLocator.Instance.GetService<EventQueue>().Unsubscribe(EventIds.ShipDestroyed, this);
+            ServiceLocator.Instance.GetService<EventQueue>().Unsubscribe(EventIds.AllShipSpawned, this);
         }
 
         public void Process(EventData eventData)

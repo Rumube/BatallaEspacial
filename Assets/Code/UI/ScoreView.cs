@@ -2,12 +2,12 @@ using Common;
 using Ships.Common;
 using TMPro;
 using UnityEngine;
+using Patterns.ServiceLocator;
 
 namespace UI
 {
     public class ScoreView : MonoBehaviour, EventObserver
     {
-        public static ScoreView Instance { get; private set; }
         [SerializeField] private TextMeshProUGUI _text;
         private int _currentScore;
         public int CurrentScore
@@ -20,24 +20,14 @@ namespace UI
             }
         }
 
-        private void Awake()
-        {
-            if(Instance != null)
-            {
-                Destroy(gameObject);
-                return;
-            }
-            Instance = this;
-        }
-
         private void Start()
         {
-            EventQueue.Instance.Subscribe(EventIds.ShipDestroyed, this);
+            ServiceLocator.Instance.GetService<EventQueue>().Subscribe(EventIds.ShipDestroyed, this);
         }
 
         private void OnDestroy()
         {
-            EventQueue.Instance.Unsubscribe(EventIds.ShipDestroyed, this);
+            ServiceLocator.Instance.GetService<EventQueue>().Unsubscribe(EventIds.ShipDestroyed, this);
 
         }
 

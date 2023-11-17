@@ -1,3 +1,4 @@
+using Patterns.ServiceLocator;
 using System.Threading.Tasks;
 using UI;
 using UnityEngine;
@@ -5,14 +6,12 @@ using UnityEngine.SceneManagement;
 
 namespace Core
 {
-    public class GlobalInstaller : MonoBehaviour
+    public class GlobalInstaller : GeneralInstaller
     {
-        private async void Start()
+        private async Task LoadNextScene()
         {
-            DontDestroyOnLoad(LoadingScreen.Instance.gameObject);
-            LoadingScreen.Instance.Show();
             await LoadScene("Game");
-            LoadingScreen.Instance.Hide();
+            ServiceLocator.Instance.GetService<LoadingScreen>().Hide();
         }
 
         private async Task LoadScene(string sceneName)
@@ -24,6 +23,15 @@ namespace Core
                 await Task.Yield();
             }
             await Task.Yield();
+        }
+
+        protected override async void DoStart()
+        {
+            await LoadNextScene();
+        }
+
+        protected override void DoInstallDependencies()
+        {
         }
     }
 }

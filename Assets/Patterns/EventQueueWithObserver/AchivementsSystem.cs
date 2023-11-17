@@ -1,6 +1,7 @@
 using Patterns.EventQueue;
 using UnityEngine;
 
+
 namespace Patterns.EventQueueWithObserver
 {
     public class AchivementsSystem : EventObserver

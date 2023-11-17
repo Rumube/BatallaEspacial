@@ -21,8 +21,16 @@ namespace Patterns.ServiceLocator
         {
             var type = typeof(T);
             Assert.IsFalse(_services.ContainsKey(type),
-                           $"Service {type} akready regustered");
+                           $"Service {type} already registered");
             _services.Add(type, service);
+        }
+        
+        public void UnregisterService<T>()
+        {
+            var type = typeof(T);
+            Assert.IsTrue(_services.ContainsKey(type),
+                           $"Service {type} is not registered");
+            _services.Remove(type);
         }
 
         public T GetService<T>()

@@ -7,14 +7,7 @@ namespace UI
 {
     public class LoadingScreen : MonoBehaviour
     {
-        public static LoadingScreen Instance { get; private set; }
         [SerializeField] private Image _screenFadeImage;
-
-
-        private void Awake()
-        {
-            Instance = this;
-        }
 
         public void Show()
         {
