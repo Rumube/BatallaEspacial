@@ -200,9 +200,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 346119852}
-  - component: {fileID: 346119853}
-  - component: {fileID: 346119854}
   - component: {fileID: 346119855}
+  - component: {fileID: 346119854}
+  - component: {fileID: 346119853}
   m_Layer: 0
   m_Name: GlobalInstaller
   m_TagString: Untagged
@@ -234,12 +234,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 346119851}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d98cc52beb8202d43856d5099ce7de4b, type: 3}
+  m_Script: {fileID: 11500000, guid: a1d762af749cc4f42bf651bec9afbfdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _installers:
-  - {fileID: 346119854}
-  - {fileID: 346119855}
+  _eventQueue: {fileID: 922862542}
 --- !u!114 &346119854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,7 +247,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 346119851}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97497e23bf1c064439fbb7ae8ea02979, type: 3}
+  m_Script: {fileID: 11500000, guid: 70c3aa650d8e1f64bab30f62d0fdad71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _loadingScreen: {fileID: 1994539593}
@@ -262,10 +260,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 346119851}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5a54f4b78123f04ab3547970e2e168a, type: 3}
+  m_Script: {fileID: 11500000, guid: 75346ab6079ca02448ccb20a4c1f97cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventQueue: {fileID: 922862542}
+  _installers:
+  - {fileID: 346119854}
+  - {fileID: 346119853}
 --- !u!1 &922862540
 GameObject:
   m_ObjectHideFlags: 0

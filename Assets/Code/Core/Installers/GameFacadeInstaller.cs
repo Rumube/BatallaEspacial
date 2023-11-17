@@ -2,7 +2,7 @@ using Battle;
 using Patterns.ServiceLocator;
 using UnityEngine;
 
-namespace Core
+namespace Core.Installers
 {
     public class GameFacadeInstaller : Installer
     {

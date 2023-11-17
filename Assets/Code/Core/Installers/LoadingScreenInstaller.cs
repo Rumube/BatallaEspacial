@@ -2,7 +2,7 @@ using Patterns.ServiceLocator;
 using UI;
 using UnityEngine;
 
-namespace Core
+namespace Core.Installers
 {
     public class LoadingScreenInstaller : Installer
     {

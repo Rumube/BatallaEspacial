@@ -2,7 +2,7 @@ using Common;
 using Patterns.ServiceLocator;
 using UnityEngine;
 
-namespace Core
+namespace Core.Installers
 {
     public class EventQueueInstaller : Installer
     {

@@ -2609,8 +2609,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1260374842}
-  - component: {fileID: 1260374843}
-  - component: {fileID: 1260374844}
+  - component: {fileID: 1260374845}
+  - component: {fileID: 1260374846}
   m_Layer: 0
   m_Name: GameInstaller
   m_TagString: Untagged
@@ -2633,7 +2633,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1260374843
+--- !u!114 &1260374845
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2642,16 +2642,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1260374841}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a402e6645ea48740a7be05e5cf68ee5, type: 3}
+  m_Script: {fileID: 11500000, guid: 8fc2ee689140b10428e28d2a365af650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _installers:
-  - {fileID: 1260374844}
+  - {fileID: 1260374846}
   _scoreView: {fileID: 1145859962}
   _shipInstaller: {fileID: 1708995670}
   _enemySpawner: {fileID: 1616516996}
   _gameStateController: {fileID: 528201582}
---- !u!114 &1260374844
+--- !u!114 &1260374846
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2660,7 +2660,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1260374841}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 649287247ce3ed34bb0bc97f9284cb7c, type: 3}
+  m_Script: {fileID: 11500000, guid: f28eee7fde52b7a4c9ee02952f374eed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _gameFacade: {fileID: 714463787}

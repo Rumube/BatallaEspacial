@@ -1,7 +1,7 @@
 using Patterns.ServiceLocator;
 using UnityEngine;
 
-namespace Core
+namespace Core.Installers
 {
     public abstract class GeneralInstaller : MonoBehaviour
     {
