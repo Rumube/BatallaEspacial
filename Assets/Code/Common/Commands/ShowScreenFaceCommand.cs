@@ -13,6 +13,6 @@ namespace Common.Commands
             serviceLocator.GetService<ScreenFade>().Show();
 
             await Task.Delay(200);
-        }
+        } 
     }
 }
