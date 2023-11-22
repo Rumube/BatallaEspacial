@@ -1,5 +1,7 @@
 using Battle;
 using Common;
+using Common.Commands;
+using Patterns.Command;
 using Patterns.ServiceLocator;
 using TMPro;
 using UnityEngine;
@@ -11,10 +13,12 @@ namespace UI
     {
         [SerializeField] private TextMeshProUGUI _scoreText;
         [SerializeField] Button _restartButton;
+        [SerializeField] Button _backToMenu;
 
         private void Awake()
         {
             _restartButton.onClick.AddListener(RestartGame);
+            _backToMenu.onClick.AddListener(BackToMenu);
         }
 
         private void Start()
@@ -29,6 +33,12 @@ namespace UI
             ServiceLocator.Instance.GetService<EventQueue>().Unsubscribe(EventIds.GameOver, this);
         }
 
+        private void BackToMenu()
+        {
+            ServiceLocator.Instance.GetService<CommandQueue>().AddCommand(new LoadSceneCommand("Menu"));
+
+        }
+
         public void Process(EventData eventData)
         {
             if(eventData.EventId == EventIds.GameOver)
@@ -40,7 +50,8 @@ namespace UI
 
         private void RestartGame()
         {
-            ServiceLocator.Instance.GetService<GameFacade>().StartBattle();
+            ServiceLocator.Instance.GetService<CommandQueue>()
+                          .AddCommand(new StartBattleCommand());
             gameObject.SetActive(false);
         }
     }

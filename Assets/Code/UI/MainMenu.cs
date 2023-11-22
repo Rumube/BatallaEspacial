@@ -1,9 +1,7 @@
 using Common.Commands;
+using Patterns.Command;
 using Patterns.ServiceLocator;
-using System;
-using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace UI
@@ -14,7 +12,12 @@ namespace UI
 
         private void Awake()
         {
-            _startGameButton.onClick.AddListener(new LoadSceneCommand("Game").Execute);
+            _startGameButton.onClick.AddListener(OnStartButtonPressed);
+        }
+
+        private void OnStartButtonPressed()
+        {
+            ServiceLocator.Instance.GetService<CommandQueue>().AddCommand(new LoadGameSceneCommand());
         }
     }
 }

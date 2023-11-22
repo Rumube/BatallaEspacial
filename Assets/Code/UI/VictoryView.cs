@@ -1,6 +1,9 @@
 using Battle;
 using Common;
+using Common.Commands;
+using Patterns.Command;
 using Patterns.ServiceLocator;
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,10 +14,12 @@ namespace UI
     {
         [SerializeField] private TextMeshProUGUI _scoreText;
         [SerializeField] Button _restartButton;
+        [SerializeField] Button _backToMenuButton;
 
         private void Awake()
         {
             _restartButton.onClick.AddListener(RestartGame);
+            _backToMenuButton.onClick.AddListener(BackToMenu);
         }
 
         private void Start()
@@ -38,9 +43,16 @@ namespace UI
             }
         }
 
+        private void BackToMenu()
+        {
+            ServiceLocator.Instance.GetService<CommandQueue>().AddCommand(new LoadSceneCommand("Menu"));
+
+        }
+
         private void RestartGame()
         {
-            ServiceLocator.Instance.GetService<GameFacade>().StartBattle();
+            ServiceLocator.Instance.GetService<CommandQueue>()
+                          .AddCommand(new StartBattleCommand());
             gameObject.SetActive(false);
         }
     }

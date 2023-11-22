@@ -1,3 +1,4 @@
+using Patterns.Command;
 using Patterns.ServiceLocator;
 using System.Threading.Tasks;
 using UI;
@@ -5,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 namespace Common.Commands
 {
-    public class LoadSceneCommand
+    public class LoadSceneCommand : Command
     {
         private readonly string _sceneToLoad;
 
@@ -14,11 +15,12 @@ namespace Common.Commands
             _sceneToLoad = sceneToLoad;
         }
 
-        public async void Execute()
+        public async Task Execute()
         {
             var loadingScreen = ServiceLocator.Instance.GetService<LoadingScreen>();
             loadingScreen.Show();
             await LoadScene(_sceneToLoad);
+            await Task.Delay(2000);
             loadingScreen.Hide();
         }
 

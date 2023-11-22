@@ -1,4 +1,6 @@
 using Battle;
+using Common.Commands;
+using Patterns.Command;
 using Patterns.ServiceLocator;
 using Ships;
 using Ships.Enemies;
@@ -21,7 +23,8 @@ namespace UI
 
         private void StartBattle()
         {
-             ServiceLocator.Instance.GetService<GameFacade>().StartBattle();
+            ServiceLocator.Instance.GetService<CommandQueue>()
+                          .AddCommand(new StartBattleCommand());
         }
 
         private void StopBattle()
