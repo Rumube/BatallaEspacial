@@ -1,5 +1,6 @@
 using Common.Commands;
 using Patterns.Command;
+using Patterns.Composite.Command;
 using Patterns.ServiceLocator;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,7 +18,14 @@ namespace UI
 
         private void OnStartButtonPressed()
         {
-            ServiceLocator.Instance.GetService<CommandQueue>().AddCommand(new LoadGameSceneCommand());
+            var loadGameSceneCommand = new LoadGameSceneCommand();
+
+            //var compositeCommand = new CompositeCommand();
+
+            //compositeCommand.AddCommand(new LoadSceneCommand("Game"));
+            //compositeCommand.AddCommand(new StartBattleCommand());
+
+            ServiceLocator.Instance.GetService<CommandQueue>().AddCommand(loadGameSceneCommand);
         }
     }
 }
