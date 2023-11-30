@@ -1,5 +1,6 @@
 using Ships.Common;
 using Ships.Weapons;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
@@ -16,6 +17,8 @@ namespace Ships.Weapons.Projectiles
         public Teams Team { get; private set; }
         protected Transform _transform;
         public string Id => _id.Value;
+
+        public Action<Projectile> OnDestroy;
 
 
         public void Configure(Teams team)
@@ -60,6 +63,7 @@ namespace Ships.Weapons.Projectiles
         private void DestroyProjectile()
         {
             DoDestroy();
+            OnDestroy?.Invoke(this);
             Destroy(gameObject);
         }
 

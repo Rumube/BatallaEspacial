@@ -1,5 +1,6 @@
 using Battle.States;
 using Common;
+using Common.Commands;
 using Patterns.ServiceLocator;
 using Ships.Common;
 using System;
@@ -23,13 +24,12 @@ namespace Battle
 
         private void Start()
         {
-            GameFacade gameFacade = ServiceLocator.Instance.GetService<GameFacade>();
-
+            var stopBattleCommand = new StopBattleCommand();
             _idToState = new Dictionary<GameStates, GameState>
             {
                 {GameStates.Playing, new PlayingState()},
-                {GameStates.GameOver, new GameOverState(gameFacade)},
-                {GameStates.Victory, new VictoryState(gameFacade)}
+                {GameStates.GameOver, new GameOverState(stopBattleCommand)},
+                {GameStates.Victory, new VictoryState(stopBattleCommand)}
             };
 
 

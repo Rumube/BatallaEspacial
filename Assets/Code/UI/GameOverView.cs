@@ -3,56 +3,50 @@ using Common;
 using Common.Commands;
 using Patterns.Command;
 using Patterns.ServiceLocator;
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace UI
 {
-    public class GameOverView : MonoBehaviour, EventObserver
+    public class GameOverView : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI _scoreText;
         [SerializeField] Button _restartButton;
         [SerializeField] Button _backToMenu;
+        private InGameMenuMediator _mediator;
 
         private void Awake()
         {
-            _restartButton.onClick.AddListener(RestartGame);
-            _backToMenu.onClick.AddListener(BackToMenu);
+            _restartButton.onClick.AddListener(OnRestartGamePressed);
+            _backToMenu.onClick.AddListener(OnBackToMenuPressed);
         }
 
-        private void Start()
+        public void Configure(InGameMenuMediator mediator)
+        {
+            _mediator = mediator;
+        }
+
+        public void Hide()
         {
             gameObject.SetActive(false);
-            ServiceLocator.Instance.GetService<EventQueue>().Subscribe(EventIds.ShipDestroyed, this);
-            ServiceLocator.Instance.GetService<EventQueue>().Subscribe(EventIds.GameOver, this);
         }
 
-        private void OnDestroy()
+        public void Show()
         {
-            ServiceLocator.Instance.GetService<EventQueue>().Unsubscribe(EventIds.GameOver, this);
+            _scoreText.SetText(ServiceLocator.Instance.GetService<ScoreView>().CurrentScore.ToString());
+            gameObject.SetActive(true);
         }
 
-        private void BackToMenu()
+        private void OnBackToMenuPressed()
         {
-            ServiceLocator.Instance.GetService<CommandQueue>().AddCommand(new LoadSceneCommand("Menu"));
-
+            _mediator.OnBackToMenuPressed();
         }
 
-        public void Process(EventData eventData)
+        private void OnRestartGamePressed()
         {
-            if(eventData.EventId == EventIds.GameOver)
-            {
-                _scoreText.SetText(ServiceLocator.Instance.GetService<ScoreView>().CurrentScore.ToString());
-                gameObject.SetActive(true);
-            }
-        }
-
-        private void RestartGame()
-        {
-            ServiceLocator.Instance.GetService<CommandQueue>()
-                          .AddCommand(new StartBattleCommand());
-            gameObject.SetActive(false);
+            _mediator.OnRestartPressed();
         }
     }
 }
