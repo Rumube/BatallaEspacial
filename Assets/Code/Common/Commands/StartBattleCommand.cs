@@ -5,6 +5,7 @@ using Ships;
 using Ships.Enemies;
 using System.Threading.Tasks;
 using UI;
+using ScoreSystem = Common.Score.ScoreSystem;
 
 namespace Common.Commands
 {
@@ -18,6 +19,8 @@ namespace Common.Commands
             serviceLocator.GetService<ScoreView>().Reset();
             serviceLocator.GetService<EnemySpawner>().StartSpawn();
             serviceLocator.GetService<ShipInstaller>().SpawnUserShip();
+            serviceLocator.GetService<ScoreSystem>().Reset();
+
             await new HideScreenFadeCommand().Execute();
         }
     }

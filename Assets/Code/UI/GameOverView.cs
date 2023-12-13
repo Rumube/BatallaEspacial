@@ -1,12 +1,8 @@
-using Battle;
-using Common;
-using Common.Commands;
-using Patterns.Command;
 using Patterns.ServiceLocator;
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using ScoreSystem = Common.Score.ScoreSystem;
 
 namespace UI
 {
@@ -35,7 +31,8 @@ namespace UI
 
         public void Show()
         {
-            _scoreText.SetText(ServiceLocator.Instance.GetService<ScoreView>().CurrentScore.ToString());
+            var currentScore = ServiceLocator.Instance.GetService<ScoreSystem>().CurrentScore;
+            _scoreText.SetText(currentScore.ToString());
             gameObject.SetActive(true);
         }
 
